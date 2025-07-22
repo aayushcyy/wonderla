@@ -56,143 +56,145 @@ export default function Navbar1() {
   }, [setOpenSideBar]);
 
   return (
-    <div className="flex fixed w-[93%] left-14 top-9 items-center justify-between bg-white rounded-xl px-9 text-[#334DCF] py-2.5 uppercase font-extrabold text-sm z-50">
-      {/* Logo Image */}
-      <div>
-        <Image src={logo} alt="logo" className="w-28 h-auto" />
-      </div>
-      <NavigationMenu>
-        <NavigationMenuList className="flex flex-row items-center gap-x-6">
-          {/* Item 1 */}
-          <NavigationMenuItem>
-            <NavigationMenuTrigger className="!bg-transparent text-[#334DCF] !hover:bg-transparent hover:text-[#334DCF] focus:text-[#334DCF] active:text-[#334DCF] data-[state=open]:text-[#334DCF] !focus:bg-transparent !active:bg-transparent !data-[state=open]:bg-transparent shadow-none ring-0 outline-none transition-none rounded-none uppercase font-extrabold cursor-pointer px-0">
-              {" "}
-              <MapPin className="size-5 stroke-2 mr-2" />
-              Park
-            </NavigationMenuTrigger>
-            <NavigationMenuContent className="!w-72">
-              <NavigationMenuLink className="flex flex-row gap-4 items-center cursor-pointer">
-                <Image
-                  src={kochi}
-                  alt="Kochi"
-                  className="w-12 h-12 rounded-lg"
-                />
-                <p>Kochi</p>
-              </NavigationMenuLink>
-              <NavigationMenuLink className="flex flex-row gap-4 items-center cursor-pointer">
-                <Image
-                  src={bangalore}
-                  alt="Bangalore"
-                  className="w-12 h-12 rounded-lg"
-                />
-                <p>Bangalore</p>
-              </NavigationMenuLink>
-              <NavigationMenuLink className="flex flex-row gap-4 items-center cursor-pointer">
-                <Image
-                  src={hyderabad}
-                  alt="Hyderabad"
-                  className="w-12 h-12 rounded-lg"
-                />
-                <p>Hyderabad</p>
-              </NavigationMenuLink>
-              <NavigationMenuLink className="flex flex-row gap-4 items-center cursor-pointer">
-                <Image
-                  src={bhubaneshwar}
-                  alt="Bhubaneshwar"
-                  className="w-12 h-12 rounded-lg"
-                />
-                <p>Bhubaneshwar</p>
-              </NavigationMenuLink>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          {/* Item 1 */}
-          <NavigationMenuItem>
-            <NavigationMenuTrigger className="!bg-transparent text-[#334DCF] !hover:bg-transparent hover:text-[#334DCF] focus:text-[#334DCF] active:text-[#334DCF] data-[state=open]:text-[#334DCF] !focus:bg-transparent !active:bg-transparent !data-[state=open]:bg-transparent shadow-none ring-0 outline-none transition-none rounded-none uppercase font-extrabold cursor-pointer px-0">
-              <MapPin className="size-5 stroke-2 mr-2" /> Resorts
-            </NavigationMenuTrigger>
-            <NavigationMenuContent className="!w-72 px-1.5 py-3 rounded-2xl">
-              <p className="flex items-center text-xs capitalize font-normal ml-2 mb-1">
-                <MapPin className="size-5 mr-2 text-[#334DCF]" />
-                <span>Bengaluru</span>
-              </p>
-              <NavigationMenuLink className="flex flex-row gap-4 items-center cursor-pointer">
-                <Image
-                  src={resorts}
-                  alt="Kochi"
-                  className="w-12 h-12 rounded-lg"
-                />
-                <p>Resorts</p>
-              </NavigationMenuLink>
-              <NavigationMenuLink className="flex flex-row gap-4 items-center cursor-pointer">
-                <Image
-                  src={isle}
-                  alt="Bangalore"
-                  className="w-12 h-12 rounded-lg"
-                />
-                <p>The Isle</p>
-                <p className="text-xs font-extrabold bg-[#FAD600] px-2 py-1 rounded-xl">
-                  New
-                </p>
-              </NavigationMenuLink>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          {/* Item 2 */}
-          <Link href={"#"} className="flex items-center gap-2">
-            <BadgePercent className="size-4.5 stroke-2.5" />
-            Offers
-          </Link>
-          <Link href={"#"} className="flex items-center gap-2">
-            <FerrisWheel className="size-5" />
-            Rides
-          </Link>
-          <Link href={"#"} className="flex items-center gap-2">
-            <Image
-              src={food}
-              className="size-4.5"
-              style={{
-                filter:
-                  "invert(39%) sepia(90%) saturate(6970%) hue-rotate(231deg) brightness(82%) contrast(84%)",
-              }}
-            />{" "}
-            Restaurants
-          </Link>
-          <Link href={"#"} className="flex items-center gap-2">
-            <Image
-              src={event}
-              className=" size-4.5"
-              style={{
-                filter:
-                  "invert(39%) sepia(90%) saturate(6970%) hue-rotate(231deg) brightness(87%) contrast(84%)",
-              }}
-            />{" "}
-            Events
-          </Link>
-        </NavigationMenuList>
-      </NavigationMenu>
-
-      <div className="flex items-center gap-5">
-        <p className="flex items-center gap-1.5">
-          <UserIcon className="size-4" />
-          Login
-        </p>
-        <Link
-          href={"#"}
-          className="px-2.5 py-2.5 font-extrabold bg-[#FAD600] rounded-lg text-xs flex items-center gap-1"
-        >
-          Book tickets <TicketIcon className="size-3.5 -rotate-45" />
-        </Link>
+    <div className="w-full h-screen absolute bg-pink-400 top-0 ">
+      <div className="flex fixed w-[93%] left-14 top-9 items-center justify-between bg-white rounded-xl px-9 text-[#334DCF] py-2.5 uppercase font-extrabold text-sm z-50">
+        {/* Logo Image */}
         <div>
-          <Menu
-            className="size-7 cursor-pointer"
-            strokeWidth={2.3}
-            onClick={() => setOpenSideBar(true)}
-          />
+          <Image src={logo} alt="logo" className="w-28 h-auto" />
+        </div>
+        <NavigationMenu>
+          <NavigationMenuList className="flex flex-row items-center gap-x-6">
+            {/* Item 1 */}
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className="!bg-transparent text-[#334DCF] !hover:bg-transparent hover:text-[#334DCF] focus:text-[#334DCF] active:text-[#334DCF] data-[state=open]:text-[#334DCF] !focus:bg-transparent !active:bg-transparent !data-[state=open]:bg-transparent shadow-none ring-0 outline-none transition-none rounded-none uppercase font-extrabold cursor-pointer px-0">
+                {" "}
+                <MapPin className="size-5 stroke-2 mr-2" />
+                Park
+              </NavigationMenuTrigger>
+              <NavigationMenuContent className="!w-72">
+                <NavigationMenuLink className="flex flex-row gap-4 items-center cursor-pointer">
+                  <Image
+                    src={kochi}
+                    alt="Kochi"
+                    className="w-12 h-12 rounded-lg"
+                  />
+                  <p>Kochi</p>
+                </NavigationMenuLink>
+                <NavigationMenuLink className="flex flex-row gap-4 items-center cursor-pointer">
+                  <Image
+                    src={bangalore}
+                    alt="Bangalore"
+                    className="w-12 h-12 rounded-lg"
+                  />
+                  <p>Bangalore</p>
+                </NavigationMenuLink>
+                <NavigationMenuLink className="flex flex-row gap-4 items-center cursor-pointer">
+                  <Image
+                    src={hyderabad}
+                    alt="Hyderabad"
+                    className="w-12 h-12 rounded-lg"
+                  />
+                  <p>Hyderabad</p>
+                </NavigationMenuLink>
+                <NavigationMenuLink className="flex flex-row gap-4 items-center cursor-pointer">
+                  <Image
+                    src={bhubaneshwar}
+                    alt="Bhubaneshwar"
+                    className="w-12 h-12 rounded-lg"
+                  />
+                  <p>Bhubaneshwar</p>
+                </NavigationMenuLink>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            {/* Item 1 */}
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className="!bg-transparent text-[#334DCF] !hover:bg-transparent hover:text-[#334DCF] focus:text-[#334DCF] active:text-[#334DCF] data-[state=open]:text-[#334DCF] !focus:bg-transparent !active:bg-transparent !data-[state=open]:bg-transparent shadow-none ring-0 outline-none transition-none rounded-none uppercase font-extrabold cursor-pointer px-0">
+                <MapPin className="size-5 stroke-2 mr-2" /> Resorts
+              </NavigationMenuTrigger>
+              <NavigationMenuContent className="!w-72 px-1.5 py-3 rounded-2xl">
+                <p className="flex items-center text-xs capitalize font-normal ml-2 mb-1">
+                  <MapPin className="size-5 mr-2 text-[#334DCF]" />
+                  <span>Bengaluru</span>
+                </p>
+                <NavigationMenuLink className="flex flex-row gap-4 items-center cursor-pointer">
+                  <Image
+                    src={resorts}
+                    alt="Kochi"
+                    className="w-12 h-12 rounded-lg"
+                  />
+                  <p>Resorts</p>
+                </NavigationMenuLink>
+                <NavigationMenuLink className="flex flex-row gap-4 items-center cursor-pointer">
+                  <Image
+                    src={isle}
+                    alt="Bangalore"
+                    className="w-12 h-12 rounded-lg"
+                  />
+                  <p>The Isle</p>
+                  <p className="text-xs font-extrabold bg-[#FAD600] px-2 py-1 rounded-xl">
+                    New
+                  </p>
+                </NavigationMenuLink>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            {/* Item 2 */}
+            <Link href={"#"} className="flex items-center gap-2">
+              <BadgePercent className="size-4.5 stroke-2.5" />
+              Offers
+            </Link>
+            <Link href={"#"} className="flex items-center gap-2">
+              <FerrisWheel className="size-5" />
+              Rides
+            </Link>
+            <Link href={"#"} className="flex items-center gap-2">
+              <Image
+                src={food}
+                className="size-4.5"
+                style={{
+                  filter:
+                    "invert(39%) sepia(90%) saturate(6970%) hue-rotate(231deg) brightness(82%) contrast(84%)",
+                }}
+              />{" "}
+              Restaurants
+            </Link>
+            <Link href={"#"} className="flex items-center gap-2">
+              <Image
+                src={event}
+                className=" size-4.5"
+                style={{
+                  filter:
+                    "invert(39%) sepia(90%) saturate(6970%) hue-rotate(231deg) brightness(87%) contrast(84%)",
+                }}
+              />{" "}
+              Events
+            </Link>
+          </NavigationMenuList>
+        </NavigationMenu>
+
+        <div className="flex items-center gap-5">
+          <p className="flex items-center gap-1.5">
+            <UserIcon className="size-4" />
+            Login
+          </p>
+          <Link
+            href={"#"}
+            className="px-2.5 py-2.5 font-extrabold bg-[#FAD600] rounded-lg text-xs flex items-center gap-1"
+          >
+            Book tickets <TicketIcon className="size-3.5 -rotate-45" />
+          </Link>
+          <div>
+            <Menu
+              className="size-7 cursor-pointer"
+              strokeWidth={2.3}
+              onClick={() => setOpenSideBar(true)}
+            />
+          </div>
         </div>
       </div>
       {/* Side Bar */}
       {openSideBar && (
         <div
-          className="w-[480px] h-screen top-0 right-0 z-20 bg-white absolute flex flex-col px-7.5 pt-8 pb-5 gap-7 overflow-y-scroll sidebar-scroll"
+          className="w-[480px] h-screen top-0 right-0 z-50 bg-white absolute flex flex-col px-7.5 pt-8 pb-5 gap-7 overflow-y-scroll sidebar-scroll"
           ref={sidebarRef}
         >
           <div className="flex justify-between items-center">

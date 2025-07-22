@@ -26,7 +26,7 @@ export default function SideBarChild({
   const [showOptionMenu, setShowOptionMenu] = useState(false);
   return (
     <div
-      className={`flex flex-col border-b-[1px] border-[#8989894d] py-3 ${classname}`}
+      className={`flex flex-col border-b-[1px] cursor-pointer z-[60] border-[#8989894d] py-3 ${classname}`}
       onClick={() => {
         showParks
           ? setShowOptionParks(!showOptionParks)
