@@ -100,6 +100,35 @@ export default function RidesSection() {
           }`}
           onClick={() => setSelected("kids")}
         />
+        <div className="flex absolute flex-col gap-[155px] top-32 left-[250px]">
+          <div
+            className="flex flex-col text-white w-24 items-start text-xl gap-0.5 cursor-pointer"
+            onClick={() => setSelected("land")}
+          >
+            <p>Land</p>
+            <p className="bg-[#788BEB] px-3 py-0.5 text-sm rounded-full">
+              72 Rides
+            </p>
+          </div>
+          <div
+            className="flex flex-col text-white w-24 items-start text-xl gap-0.5 ml-[80px] cursor-pointer"
+            onClick={() => setSelected("water")}
+          >
+            <p>Water</p>
+            <p className="bg-[#788BEB] px-3 py-0.5 text-sm rounded-full">
+              55 Rides
+            </p>
+          </div>
+          <div
+            className="flex flex-col text-white w-24 items-start text-xl gap-0.5 cursor-pointer"
+            onClick={() => setSelected("kids")}
+          >
+            <p>Kids</p>
+            <p className="bg-[#788BEB] px-3 py-0.5 text-sm rounded-full">
+              36 Rides
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className=" w-[70%] z-10"></div>
