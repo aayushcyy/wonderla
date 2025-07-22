@@ -56,7 +56,7 @@ export default function Navbar1() {
   }, [setOpenSideBar]);
 
   return (
-    <div className="w-full h-screen absolute bg-pink-400 top-0 ">
+    <div className="w-full h-screen absolute top-0">
       <div className="flex fixed w-[93%] left-14 top-9 items-center justify-between bg-white rounded-xl px-9 text-[#334DCF] py-2.5 uppercase font-extrabold text-sm z-50">
         {/* Logo Image */}
         <div>

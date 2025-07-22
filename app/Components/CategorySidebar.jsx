@@ -16,7 +16,7 @@ export default function CategorySidebar() {
   };
 
   return (
-    <div className="w-[43%] h-screen relative bg-purple-600 pt-10">
+    <div className="w-[43%] h-screen relative pt-10">
       <div
         className="absolute w-[600px] h-[600px] rounded-full border-[90px] bg-s border-[#E8E9F1] -left-[330px] top-[110px]"
         style={{
