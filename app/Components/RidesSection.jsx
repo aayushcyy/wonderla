@@ -14,21 +14,49 @@ export default function RidesSection() {
   const [selected, setSelected] = useState("kids");
 
   const positions = {
-    land: { top: "top-[90px]", left: "left-[50px]" },
-    water: { top: "top-[295px]", left: "left-[135px]" },
-    kids: { top: "top-[480px]", left: "left-[57px]" },
+    land: { top: "-top-[70px]", left: "left-[295px]" },
+    water: { top: "top-[135px]", left: "left-[375px]" },
+    kids: { top: "top-[320px]", left: "left-[297px]" },
   };
 
   return (
     <section className="w-full h-screen flex justify-between relative">
-      {/* Side circle div */}
-      <div className="absolute w-[600px] h-[600px] rounded-full z-0 border-[90px] border-[#E8E9F1] -left-[330px] top-[70px]"></div>
-
+      {/* Side circle div CONTAINING 2 DIVS*/}
+      <div
+        className="absolute w-[600px] h-[600px] rounded-full border-[90px] bg-s border-[#E8E9F1] -left-[330px] top-[70px]"
+        style={{
+          WebkitMaskImage: "linear-gradient(white, white)",
+          maskImage: "linear-gradient(white, white)",
+          WebkitMaskRepeat: "no-repeat",
+          maskRepeat: "no-repeat",
+          WebkitMaskSize: "100% 100%",
+          maskSize: "100% 100%",
+        }}
+      >
+        <div className="absolute w-[421px] h-[421px] left-[0px] top-[0px] bg-[#22304A] rounded-full z-[6]"></div>
+        {/* Shadow Circle */}
+        <div
+          className={`w-[170px] h-[170px] bg-transparent border-[10px] border-[#FAD600] rounded-full absolute z-[5] transition-all duration-500 ease-in-out
+        ${positions[selected].top} ${positions[selected].left}`}
+          style={{
+            boxShadow: "0px 0px 190px 180px #FAD600",
+          }}
+        ></div>
+      </div>
       {/* Yellow moving circle */}
       <div
-        className={`w-[170px] h-[170px] bg-white border-[10px] border-yellow-400 rounded-full absolute z-10 transition-all duration-500 ease-in-out
-        ${positions[selected].top} ${positions[selected].left}`}
+        className={`w-[170px] h-[170px] bg-white border-[10px] border-[#FAD600] rounded-full absolute z-[5] transition-all duration-500 ease-in-out
+          ${
+            selected === "land"
+              ? "top-[91px] left-[53px]"
+              : selected === "water"
+              ? "top-[294px] left-[135px]"
+              : selected === "kids"
+              ? "top-[479px] left-[56px]"
+              : ""
+          }`}
       ></div>
+
       {/* Ride Icons */}
       <div className="w-[27%] relative z-20">
         {/* Land */}
@@ -37,7 +65,7 @@ export default function RidesSection() {
           alt="land ride"
           width={100}
           height={100}
-          className={`absolute cursor-pointer transition-all duration-500 ${
+          className={`absolute cursor-pointer transition-all duration-500 z-20 ${
             selected === "land"
               ? "w-[90px] top-[125px] left-[90px]"
               : "w-[60px] top-[135px] left-[98px]"
@@ -51,7 +79,7 @@ export default function RidesSection() {
           alt="water ride"
           width={100}
           height={100}
-          className={`absolute cursor-pointer transition-all duration-500 ${
+          className={`absolute cursor-pointer transition-all duration-500 z-20 ${
             selected === "water"
               ? "w-[90px] top-[330px] left-[180px]"
               : "w-[60px] top-[330px] left-[195px]"
@@ -65,9 +93,9 @@ export default function RidesSection() {
           alt="horse ride"
           width={100}
           height={100}
-          className={`absolute cursor-pointer transition-all duration-500 ${
+          className={`absolute cursor-pointer transition-all duration-500 z-20 ${
             selected === "kids"
-              ? "w-[90px] top-[515px] left-[95px]"
+              ? "w-[90px] top-[510px] left-[93px]"
               : "w-[60px] top-[530px] left-[99px]"
           }`}
           onClick={() => setSelected("kids")}
