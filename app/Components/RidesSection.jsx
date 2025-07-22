@@ -5,6 +5,7 @@ import RideCard from "./RideCard";
 import CategorySidebar from "./CategorySidebar";
 import CarouselControls from "./CarouselControls";
 import rides from "../Data/rides";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import horseRide from "../../public/horseRide.svg";
 import waterRide from "../../public/waterRide.svg";
 import landRide from "../../public/landRides.svg";
@@ -56,7 +57,6 @@ export default function RidesSection() {
               : ""
           }`}
       ></div>
-
       {/* Ride Icons */}
       <div className="w-[27%] relative z-20">
         {/* Land */}
@@ -131,7 +131,25 @@ export default function RidesSection() {
         </div>
       </div>
 
-      <div className=" w-[70%] z-10"></div>
+      <div className=" w-[70%] z-10 flex flex-col pt-24 text-white">
+        <div className="flex flex-row justify-between items-center pr-13">
+          <p className="text-6xl font-extrabold uppercase ">Our Iconic Rides</p>
+          <div className="flex gap-5">
+            <button className="p-1.5 bg-[#FAD600] text-white rounded-full cursor-pointer flex items-center text-center hover:scale-110 active:scale-95 transition-all ease-in-out duration-300">
+              <ChevronLeft
+                className="text-[#334DCF] z-50 size-8"
+                strokeWidth={2}
+              />
+            </button>
+            <button className="p-1.5 bg-[#FAD600] text-white rounded-full cursor-pointer flex items-center text-center hover:scale-110 active:scale-95 transition-all ease-in-out duration-300">
+              <ChevronRight
+                className="text-[#334DCF] z-50 size-8"
+                strokeWidth={2}
+              />
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
