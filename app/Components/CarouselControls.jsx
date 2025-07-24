@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+} from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import RideCard from "./RideCard";
 import rides from "../Data/rides.js";
@@ -14,21 +20,42 @@ export default function CarouselControls({ selectedCategory }) {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
   const { landRides, waterRides, kidsRides } = rides;
 
-  // Manual navigation functions
-  const scrollToLeft = () => {
+  // Memoize ride data to prevent unnecessary re-renders
+  const rideData = useMemo(() => {
+    switch (selectedCategory) {
+      case "land":
+        return landRides;
+      case "water":
+        return waterRides;
+      case "kids":
+        return kidsRides;
+      default:
+        return landRides;
+    }
+  }, [selectedCategory, landRides, waterRides, kidsRides]);
+
+  // Reset scroll position when category changes
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = 0;
+      setAutoScrollEnabled(true);
+    }
+  }, [selectedCategory]);
+
+  // Memoized scroll functions
+  const scrollToLeft = useCallback(() => {
     if (!scrollRef.current) return;
 
     setAutoScrollEnabled(false);
     scrollRef.current.style.scrollBehavior = "smooth";
     scrollRef.current.scrollLeft -= 260;
 
-    // Re-enable auto-scroll after a delay
     setTimeout(() => {
       setAutoScrollEnabled(true);
     }, 2000);
-  };
+  }, []);
 
-  const scrollToRight = () => {
+  const scrollToRight = useCallback(() => {
     if (!scrollRef.current) return;
 
     setAutoScrollEnabled(false);
@@ -39,7 +66,6 @@ export default function CarouselControls({ selectedCategory }) {
     container.style.scrollBehavior = "smooth";
 
     if (currentScroll >= maxScroll - 10) {
-      // If at the end, reset to start
       setIsResetting(true);
       container.style.scrollBehavior = "auto";
       container.scrollLeft = 0;
@@ -51,15 +77,13 @@ export default function CarouselControls({ selectedCategory }) {
         }
       }, 100);
     } else {
-      // Scroll by 260px to the right
       container.scrollLeft += 260;
     }
 
-    // Re-enable auto-scroll after a delay
     setTimeout(() => {
       setAutoScrollEnabled(true);
     }, 2000);
-  };
+  }, []);
 
   // Auto-scroll functionality
   useEffect(() => {
@@ -72,7 +96,6 @@ export default function CarouselControls({ selectedCategory }) {
         const currentScroll = container.scrollLeft;
 
         if (currentScroll >= maxScroll - 10) {
-          // Reset to start when reaching the end
           setIsResetting(true);
           container.style.scrollBehavior = "auto";
           container.scrollLeft = 0;
@@ -84,7 +107,6 @@ export default function CarouselControls({ selectedCategory }) {
             }
           }, 100);
         } else {
-          // Scroll by 260px to the right
           setIsResetting(false);
           container.style.scrollBehavior = "smooth";
           container.scrollLeft += 260;
@@ -95,8 +117,8 @@ export default function CarouselControls({ selectedCategory }) {
     return () => clearInterval(interval);
   }, [autoScrollEnabled, isDragging]);
 
-  // Mouse drag handlers
-  const handleMouseDown = (e) => {
+  // Optimized mouse handlers
+  const handleMouseDown = useCallback((e) => {
     if (!scrollRef.current) return;
 
     setIsDragging(true);
@@ -104,45 +126,46 @@ export default function CarouselControls({ selectedCategory }) {
     setStartX(e.pageX - scrollRef.current.offsetLeft);
     setScrollLeft(scrollRef.current.scrollLeft);
     scrollRef.current.style.scrollBehavior = "auto";
-  };
+  }, []);
 
-  const handleMouseMove = (e) => {
-    if (!isDragging || !scrollRef.current) return;
+  const handleMouseMove = useCallback(
+    (e) => {
+      if (!isDragging || !scrollRef.current) return;
 
-    e.preventDefault();
-    const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Multiply by 2 for faster scrolling
-    scrollRef.current.scrollLeft = scrollLeft - walk;
-  };
+      e.preventDefault();
+      const x = e.pageX - scrollRef.current.offsetLeft;
+      const walk = (x - startX) * 2;
+      scrollRef.current.scrollLeft = scrollLeft - walk;
+    },
+    [isDragging, startX, scrollLeft]
+  );
 
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     setIsDragging(false);
     if (scrollRef.current) {
       scrollRef.current.style.scrollBehavior = "smooth";
     }
 
-    // Re-enable auto-scroll after a delay
     setTimeout(() => {
       setAutoScrollEnabled(true);
     }, 2000);
-  };
+  }, []);
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     if (isDragging) {
       setIsDragging(false);
       if (scrollRef.current) {
         scrollRef.current.style.scrollBehavior = "smooth";
       }
 
-      // Re-enable auto-scroll after a delay
       setTimeout(() => {
         setAutoScrollEnabled(true);
       }, 2000);
     }
-  };
+  }, [isDragging]);
 
-  // Touch drag handlers for mobile
-  const handleTouchStart = (e) => {
+  // Touch handlers
+  const handleTouchStart = useCallback((e) => {
     if (!scrollRef.current) return;
 
     setIsDragging(true);
@@ -150,47 +173,35 @@ export default function CarouselControls({ selectedCategory }) {
     setStartX(e.touches[0].pageX - scrollRef.current.offsetLeft);
     setScrollLeft(scrollRef.current.scrollLeft);
     scrollRef.current.style.scrollBehavior = "auto";
-  };
+  }, []);
 
-  const handleTouchMove = (e) => {
-    if (!isDragging || !scrollRef.current) return;
+  const handleTouchMove = useCallback(
+    (e) => {
+      if (!isDragging || !scrollRef.current) return;
 
-    const x = e.touches[0].pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX) * 2;
-    scrollRef.current.scrollLeft = scrollLeft - walk;
-  };
+      const x = e.touches[0].pageX - scrollRef.current.offsetLeft;
+      const walk = (x - startX) * 2;
+      scrollRef.current.scrollLeft = scrollLeft - walk;
+    },
+    [isDragging, startX, scrollLeft]
+  );
 
-  const handleTouchEnd = () => {
+  const handleTouchEnd = useCallback(() => {
     setIsDragging(false);
     if (scrollRef.current) {
       scrollRef.current.style.scrollBehavior = "smooth";
     }
 
-    // Re-enable auto-scroll after a delay
     setTimeout(() => {
       setAutoScrollEnabled(true);
     }, 2000);
-  };
-
-  const getRides = () => {
-    switch (selectedCategory) {
-      case "land":
-        return landRides;
-      case "water":
-        return waterRides;
-      case "kids":
-        return kidsRides;
-      default:
-        return [];
-    }
-  };
-  const rideData = getRides();
+  }, []);
 
   return (
     <div className="w-[70%] pr-16 relative z-10 flex flex-col gap-8 pt-28 text-white">
       {/* Heading */}
       <div className="flex flex-row justify-between items-center pr-13">
-        <p className="text-6xl font-extrabold uppercase ">Our Iconic Rides</p>
+        <p className="text-6xl font-extrabold uppercase">Our Iconic Rides</p>
         <div className="flex gap-5">
           <button
             onClick={scrollToLeft}
@@ -212,6 +223,7 @@ export default function CarouselControls({ selectedCategory }) {
           </button>
         </div>
       </div>
+
       {/* Ride Carousels */}
       <div
         className={`flex gap-4 overflow-x-auto px-6 py-4 transition-all duration-300 h-[400px] ${
@@ -221,6 +233,8 @@ export default function CarouselControls({ selectedCategory }) {
           scrollBehavior: isResetting ? "auto" : "smooth",
           scrollbarWidth: "none",
           msOverflowStyle: "none",
+          transform: "translateZ(0)", // Force hardware acceleration
+          willChange: "scroll-position", // Optimize for scrolling
         }}
         ref={scrollRef}
         onMouseDown={handleMouseDown}
@@ -233,7 +247,7 @@ export default function CarouselControls({ selectedCategory }) {
       >
         {rideData.map((item, index) => (
           <RideCard
-            key={index}
+            key={`${selectedCategory}-${item.id}`} // Better key for React optimization
             title={item.title}
             desc={item.description}
             city={item.location}
@@ -241,6 +255,7 @@ export default function CarouselControls({ selectedCategory }) {
           />
         ))}
       </div>
+
       {/* Button */}
       <div className="w-full flex justify-start mt-10">
         <button className="px-24 cursor-pointer hover:scale-105 active:scale-95 transition-all ease-in-out duration-200 py-3.5 text-base rounded-full font-extrabold bg-[#FAD600] text-[#334DCF]">

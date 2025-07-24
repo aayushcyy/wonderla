@@ -121,6 +121,15 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+video {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.carousel-container {
+  contain: layout style paint;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
