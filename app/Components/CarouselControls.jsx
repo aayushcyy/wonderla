@@ -174,6 +174,12 @@ export default function CarouselControls() {
           />
         ))}
       </div>
+      {/* Button */}
+      <div className="w-full flex justify-start mt-10">
+        <button className="px-24 cursor-pointer hover:scale-105 active:scale-95 transition-all ease-in-out duration-200 py-3.5 text-base rounded-full font-extrabold bg-[#FAD600] text-[#334DCF]">
+          Explore All Rides!
+        </button>
+      </div>
     </div>
   );
 }
