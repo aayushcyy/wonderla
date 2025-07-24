@@ -14,6 +14,53 @@ export default function CarouselControls() {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
   const { landRides, waterRides, kidsRides } = rides;
 
+  // Manual navigation functions
+  const scrollToLeft = () => {
+    if (!scrollRef.current) return;
+
+    setAutoScrollEnabled(false);
+    scrollRef.current.style.scrollBehavior = "smooth";
+    scrollRef.current.scrollLeft -= 260;
+
+    // Re-enable auto-scroll after a delay
+    setTimeout(() => {
+      setAutoScrollEnabled(true);
+    }, 2000);
+  };
+
+  const scrollToRight = () => {
+    if (!scrollRef.current) return;
+
+    setAutoScrollEnabled(false);
+    const container = scrollRef.current;
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    const currentScroll = container.scrollLeft;
+
+    container.style.scrollBehavior = "smooth";
+
+    if (currentScroll >= maxScroll - 10) {
+      // If at the end, reset to start
+      setIsResetting(true);
+      container.style.scrollBehavior = "auto";
+      container.scrollLeft = 0;
+
+      setTimeout(() => {
+        setIsResetting(false);
+        if (container) {
+          container.style.scrollBehavior = "smooth";
+        }
+      }, 100);
+    } else {
+      // Scroll by 260px to the right
+      container.scrollLeft += 260;
+    }
+
+    // Re-enable auto-scroll after a delay
+    setTimeout(() => {
+      setAutoScrollEnabled(true);
+    }, 2000);
+  };
+
   // Auto-scroll functionality
   useEffect(() => {
     if (!autoScrollEnabled || isDragging) return;
@@ -131,13 +178,19 @@ export default function CarouselControls() {
       <div className="flex flex-row justify-between items-center pr-13">
         <p className="text-6xl font-extrabold uppercase ">Our Iconic Rides</p>
         <div className="flex gap-5">
-          <button className="p-1.5 bg-[#FAD600] text-white rounded-full cursor-pointer flex items-center text-center hover:scale-110 active:scale-95 transition-all ease-in-out duration-300">
+          <button
+            onClick={scrollToLeft}
+            className="p-1.5 bg-[#FAD600] text-white rounded-full cursor-pointer flex items-center text-center hover:scale-110 active:scale-95 transition-all ease-in-out duration-300"
+          >
             <ChevronLeft
               className="text-[#334DCF] z-50 size-8"
               strokeWidth={2}
             />
           </button>
-          <button className="p-1.5 bg-[#FAD600] text-white rounded-full cursor-pointer flex items-center text-center hover:scale-110 active:scale-95 transition-all ease-in-out duration-300">
+          <button
+            onClick={scrollToRight}
+            className="p-1.5 bg-[#FAD600] text-white rounded-full cursor-pointer flex items-center text-center hover:scale-110 active:scale-95 transition-all ease-in-out duration-300"
+          >
             <ChevronRight
               className="text-[#334DCF] z-50 size-8"
               strokeWidth={2}
