@@ -6,8 +6,7 @@ This project is a **frontend assignment** to replicate a section from the [Wonde
 
 ## 📸 Preview
 
-> ![Screenshot](image.png)
-> Or link to your [Vercel Deployment](https://vercel.com)
+> https://wonderla-eta.vercel.app/
 
 ---
 
@@ -79,7 +78,7 @@ Follow the steps below to run the project locally:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/wonderla-rides-clone.git
+git clone https://github.com/aayushcyy/wonderla
 
 # 2. Navigate into the project directory
 cd wonderla-rides-clone
@@ -95,7 +94,7 @@ npm run dev
 
 🌐 Deployment
 Deployed on Vercel ✅
-🔗 Live Preview: https://your-wonderla-clone.vercel.app/
+🔗 Live Preview: https://wonderla-eta.vercel.app/
 
 📞 Contact
 Name: Aayush Chaudhary
