@@ -20,7 +20,7 @@ export default function CarouselControls({ selectedCategory }) {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true);
   const { landRides, waterRides, kidsRides } = rides;
 
-  // Memoize ride data to prevent unnecessary re-renders
+  // Memoizing ride data to stop unnecessary re-renders
   const rideData = useMemo(() => {
     switch (selectedCategory) {
       case "land":
@@ -34,7 +34,7 @@ export default function CarouselControls({ selectedCategory }) {
     }
   }, [selectedCategory, landRides, waterRides, kidsRides]);
 
-  // Reset scroll position when category changes
+  // reseting scroll position during category changes
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollLeft = 0;
@@ -42,7 +42,7 @@ export default function CarouselControls({ selectedCategory }) {
     }
   }, [selectedCategory]);
 
-  // Memoized scroll functions
+  // memoizing scroll functions
   const scrollToLeft = useCallback(() => {
     if (!scrollRef.current) return;
 
@@ -85,7 +85,7 @@ export default function CarouselControls({ selectedCategory }) {
     }, 2000);
   }, []);
 
-  // Auto-scroll functionality
+  // auto scroll functionality
   useEffect(() => {
     if (!autoScrollEnabled || isDragging) return;
 
@@ -117,7 +117,7 @@ export default function CarouselControls({ selectedCategory }) {
     return () => clearInterval(interval);
   }, [autoScrollEnabled, isDragging]);
 
-  // Optimized mouse handlers
+  // optimizing mouse handlers
   const handleMouseDown = useCallback((e) => {
     if (!scrollRef.current) return;
 
@@ -164,7 +164,7 @@ export default function CarouselControls({ selectedCategory }) {
     }
   }, [isDragging]);
 
-  // Touch handlers
+  // touch navigation control
   const handleTouchStart = useCallback((e) => {
     if (!scrollRef.current) return;
 
@@ -198,7 +198,7 @@ export default function CarouselControls({ selectedCategory }) {
   }, []);
 
   return (
-    <div className="w-[70%] pr-16 relative z-10 flex flex-col gap-8 pt-28 text-white">
+    <div className="w-[70%] pr-16 relative z-10 flex flex-col gap-8 pt-[120px] text-white">
       {/* Heading */}
       <div className="flex flex-row justify-between items-center pr-13">
         <p className="text-6xl font-extrabold uppercase">Our Iconic Rides</p>
@@ -226,15 +226,15 @@ export default function CarouselControls({ selectedCategory }) {
 
       {/* Ride Carousels */}
       <div
-        className={`flex gap-4 overflow-x-auto px-6 py-4 transition-all duration-300 h-[400px] ${
+        className={`flex gap-4 overflow-x-auto px-6 pb-4 pt-1 transition-all duration-300 h-[400px] ${
           isDragging ? "cursor-grabbing" : "cursor-grab"
         } ${isResetting ? "" : "scroll-smooth"}`}
         style={{
           scrollBehavior: isResetting ? "auto" : "smooth",
           scrollbarWidth: "none",
           msOverflowStyle: "none",
-          transform: "translateZ(0)", // Force hardware acceleration
-          willChange: "scroll-position", // Optimize for scrolling
+          transform: "translateZ(0)",
+          willChange: "scroll-position",
         }}
         ref={scrollRef}
         onMouseDown={handleMouseDown}
@@ -247,7 +247,7 @@ export default function CarouselControls({ selectedCategory }) {
       >
         {rideData.map((item, index) => (
           <RideCard
-            key={`${selectedCategory}-${item.id}`} // Better key for React optimization
+            key={`${selectedCategory}-${item.id}`}
             title={item.title}
             desc={item.description}
             city={item.location}
@@ -257,7 +257,7 @@ export default function CarouselControls({ selectedCategory }) {
       </div>
 
       {/* Button */}
-      <div className="w-full flex justify-start mt-10">
+      <div className="w-full flex justify-start mt-5">
         <button className="px-24 cursor-pointer hover:scale-105 active:scale-95 transition-all ease-in-out duration-200 py-3.5 text-base rounded-full font-extrabold bg-[#FAD600] text-[#334DCF]">
           Explore All Rides!
         </button>

@@ -7,14 +7,14 @@ export default function RideCard({ vidLink, title, city, desc }) {
   const videoRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Optimized video loading
+  // optimizing video loading
   useEffect(() => {
     if (videoRef.current && vidLink) {
       setIsLoading(true);
 
       const video = videoRef.current;
 
-      // Add loading event listeners
+      // adding loading event listeners
       const handleLoadStart = () => setIsLoading(true);
       const handleCanPlay = () => setIsLoading(false);
 

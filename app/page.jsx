@@ -1,4 +1,3 @@
-// app/page.jsx
 import Navbar1 from "./Components/Navbar1";
 import RidesSection from "./Components/RidesSection";
 
