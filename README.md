@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🎢 Wonderla Rides Section Clone
 
-## Getting Started
+This project is a **frontend assignment** to replicate a section from the [Wonderla](https://www.wonderla.com) website, focusing on interactive ride carousels and category filtering. Built using **Next.js**, **Tailwind CSS**, and **Framer Motion**.
 
-First, run the development server:
+---
+
+## 📸 Preview
+
+> ![Screenshot](image.png)
+> Or link to your [Vercel Deployment](https://vercel.com)
+
+---
+
+## 🚀 Features
+
+- Built using **Next.js** (React-based framework)
+- Tailwind CSS for modern, utility-first styling
+- Fully dynamic **ride carousel**
+- **Auto-scroll**, **drag**, and **button navigation**
+- Interactive **category switching** (Land, Water, Kids)
+- Video background thumbnails with optimized loading
+- Animations powered by **Framer Motion**
+- Clean component architecture
+- Fully local data (no API dependencies)
+
+---
+
+## 📂 Folder Structure
+
+.
+├── Components/
+│ ├── RideCard.jsx
+│ ├── CategorySidebar.jsx
+│ ├── CarouselControls.jsx
+│ ├── RidesSection.jsx
+│ ├── Navbar1.jsx
+│ └── SideBarChild.jsx
+├── Data/
+│ └── rides.js
+├── public/
+│ └── [All assets like images, icons]
+├── pages/
+│ └── index.jsx
+└── styles/
+└── [Tailwind configured globally]
+
+---
+
+## 🛠️ Tech Stack
+
+- [Next.js](https://nextjs.org/) – Framework
+- [Tailwind CSS](https://tailwindcss.com/) – Styling
+- [Framer Motion](https://www.framer.com/motion/) – Animations
+- [Lucide React Icons](https://lucide.dev/) – Icons
+- Heroicons – UI icons for navigation
+
+---
+
+## 🧾 Assignment Instructions (Recap)
+
+> Recreate the Wonderla Rides Section using:
+
+- ✅ ReactJS or NextJS
+- ✅ Tailwind CSS
+- ✅ Proper component structure:
+  - `RideCard`, `CarouselControls`, `CategorySidebar`, `RidesSection`
+- ✅ Dynamic data loading from local JSON file
+- ✅ Category filtering
+- ✅ Carousel with scroll buttons
+- ✅ "Explore All Rides" button
+- ✅ Bonus: Auto-scroll + Framer Motion animations
+- ❌ Mobile responsiveness not required
+
+---
+
+## 🧪 Local Setup
+
+Follow the steps below to run the project locally:
 
 ```bash
+# 1. Clone the repository
+git clone https://github.com/YOUR_USERNAME/wonderla-rides-clone.git
+
+# 2. Navigate into the project directory
+cd wonderla-rides-clone
+
+# 3. Install dependencies
+npm install
+
+# 4. Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Open http://localhost:3000 to view it in the browser.
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🌐 Deployment
+Deployed on Vercel ✅
+🔗 Live Preview: https://your-wonderla-clone.vercel.app/
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+📞 Contact
+Name: Aayush Chaudhary
+Email: aayushcyy@gmail.com
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+💡 Notes
 
-## Learn More
+- This is a frontend-only UI clone. No backend/API is used.
 
-To learn more about Next.js, take a look at the following resources:
+- Ride data was collected using DevTools from Wonderla’s original site.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- All videos/images are directly linked (CDN-hosted from Wonderla's site).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+Would you like me to:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Customize it with your **GitHub repo link**, **Vercel link**, and **name**, or
+2. Generate it as a downloadable `README.md` file?
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Let me know!
