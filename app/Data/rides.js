@@ -1,5 +1,3 @@
-// data/rides.js
-
 // land rides data
 const landRides = [
   {

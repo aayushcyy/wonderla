@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import RideCard from "./RideCard";
 import rides from "../Data/rides.js";
 
-export default function CarouselControls() {
+export default function CarouselControls({ selectedCategory }) {
   const scrollRef = useRef(null);
   const [isResetting, setIsResetting] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
@@ -172,6 +172,20 @@ export default function CarouselControls() {
     }, 2000);
   };
 
+  const getRides = () => {
+    switch (selectedCategory) {
+      case "land":
+        return landRides;
+      case "water":
+        return waterRides;
+      case "kids":
+        return kidsRides;
+      default:
+        return [];
+    }
+  };
+  const rideData = getRides();
+
   return (
     <div className="w-[70%] pr-16 relative z-10 flex flex-col gap-8 pt-28 text-white">
       {/* Heading */}
@@ -217,7 +231,7 @@ export default function CarouselControls() {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        {landRides.map((item, index) => (
+        {rideData.map((item, index) => (
           <RideCard
             key={index}
             title={item.title}

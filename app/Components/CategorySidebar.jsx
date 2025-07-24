@@ -1,14 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import horseRide from "../../public/horseRide.svg";
 import waterRide from "../../public/waterRide.svg";
 import landRide from "../../public/landRides.svg";
 import Image from "next/image";
 
-export default function CategorySidebar() {
-  const [selected, setSelected] = useState("kids");
-
+export default function CategorySidebar({
+  selectedCategory,
+  setSelectedCategory,
+}) {
   const positions = {
     land: { top: "-top-[70px]", left: "left-[295px]" },
     water: { top: "top-[135px]", left: "left-[375px]" },
@@ -32,7 +33,7 @@ export default function CategorySidebar() {
         {/* Shadow Circle */}
         <div
           className={`w-[170px] h-[170px] bg-transparent border-[10px] border-[#FAD600] rounded-full absolute z-[5] transition-all duration-500 ease-in-out
-        ${positions[selected].top} ${positions[selected].left}`}
+        ${positions[selectedCategory].top} ${positions[selectedCategory].left}`}
           style={{
             boxShadow: "0px 0px 190px 180px #FAD600",
           }}
@@ -42,11 +43,11 @@ export default function CategorySidebar() {
       <div
         className={`w-[170px] h-[170px] bg-white border-[10px] border-[#FAD600] rounded-full absolute z-[5] transition-all duration-500 ease-in-out
           ${
-            selected === "land"
+            selectedCategory === "land"
               ? "top-[131px] left-[50px]"
-              : selected === "water"
+              : selectedCategory === "water"
               ? "top-[335px] left-[135px]"
-              : selected === "kids"
+              : selectedCategory === "kids"
               ? "top-[514px] left-[56px]"
               : ""
           }`}
@@ -60,11 +61,11 @@ export default function CategorySidebar() {
           width={100}
           height={100}
           className={`absolute cursor-pointer transition-all duration-500 z-20 ${
-            selected === "land"
+            selectedCategory === "land"
               ? "w-[90px] top-[125px] left-[90px]"
               : "w-[60px] top-[135px] left-[98px]"
           }`}
-          onClick={() => setSelected("land")}
+          onClick={() => setSelectedCategory("land")}
         />
 
         {/* Water */}
@@ -74,11 +75,11 @@ export default function CategorySidebar() {
           width={100}
           height={100}
           className={`absolute cursor-pointer transition-all duration-500 z-20 ${
-            selected === "water"
+            selectedCategory === "water"
               ? "w-[90px] top-[330px] left-[180px]"
               : "w-[60px] top-[330px] left-[195px]"
           }`}
-          onClick={() => setSelected("water")}
+          onClick={() => setSelectedCategory("water")}
         />
 
         {/* Kids */}
@@ -88,16 +89,16 @@ export default function CategorySidebar() {
           width={100}
           height={100}
           className={`absolute cursor-pointer transition-all duration-500 z-20 ${
-            selected === "kids"
+            selectedCategory === "kids"
               ? "w-[90px] top-[510px] left-[93px]"
               : "w-[60px] top-[530px] left-[99px]"
           }`}
-          onClick={() => setSelected("kids")}
+          onClick={() => setSelectedCategory("kids")}
         />
         <div className="flex absolute flex-col gap-[155px] top-32 left-[250px]">
           <div
             className="flex flex-col text-white w-24 items-start text-xl gap-0.5 cursor-pointer"
-            onClick={() => setSelected("land")}
+            onClick={() => setSelectedCategory("land")}
           >
             <p>Land</p>
             <p className="bg-[#788BEB] px-3 py-0.5 text-sm rounded-full">
@@ -106,7 +107,7 @@ export default function CategorySidebar() {
           </div>
           <div
             className="flex flex-col text-white w-24 items-start text-xl gap-0.5 ml-[80px] cursor-pointer"
-            onClick={() => setSelected("water")}
+            onClick={() => setSelectedCategory("water")}
           >
             <p>Water</p>
             <p className="bg-[#788BEB] px-3 py-0.5 text-sm rounded-full">
@@ -115,7 +116,7 @@ export default function CategorySidebar() {
           </div>
           <div
             className="flex flex-col text-white w-24 items-start text-xl gap-0.5 cursor-pointer"
-            onClick={() => setSelected("kids")}
+            onClick={() => setSelectedCategory("kids")}
           >
             <p>Kids</p>
             <p className="bg-[#788BEB] px-3 py-0.5 text-sm rounded-full">

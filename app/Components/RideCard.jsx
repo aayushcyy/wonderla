@@ -1,11 +1,22 @@
 // components/RideCard.jsx
 
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 export default function RideCard({ vidLink, title, city, desc }) {
+  const videoRef = useRef(null);
+
+  // Force video to reload when vidLink changes
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.load();
+    }
+  }, [vidLink]);
+
   return (
     <div className="w-64 h-[360px] text-xs font-bold rounded-2xl flex-none flex items-end justify-end relative hover:scale-105 transition-transform duration-500 select-none overflow-hidden">
       <video
+        ref={videoRef}
         width={100}
         height={100}
         autoPlay
@@ -13,6 +24,7 @@ export default function RideCard({ vidLink, title, city, desc }) {
         loop
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover"
+        key={vidLink} // This forces React to recreate the video element when vidLink changes
       >
         <source src={vidLink} type="video/mp4" />
       </video>
